@@ -1,13 +1,14 @@
 package model.procedures;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ListOfRequests {
 
-    private ArrayList<Request> requests;
+    private LinkedList<Request> requests;
 
     public ListOfRequests(){
-        requests = new ArrayList<>();
+        requests = new LinkedList<>();
     }
 
     public boolean add(Request req){

@@ -1,13 +1,14 @@
 package model.procedures;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ListOfClasses {
 
-    private ArrayList<Class> classes;
+    private LinkedList<Class> classes;
 
     public ListOfClasses(){
-        classes = new ArrayList<>();
+        classes = new LinkedList<>();
     }
 
     public boolean add(Class aClass){

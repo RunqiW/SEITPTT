@@ -19,7 +19,7 @@ public class Teacher extends User{
 
     public void train() {
         this.isTrained = true;
-        trained = trained;
+        trained = "trained";
     }
 
     public String getRequestName() {
@@ -44,7 +44,7 @@ public class Teacher extends User{
                 this.getLastName() + "\t" +
                 this.getUserName() + "\t" +
                 trained + "\t" +
-                requestName + "\t" +
-                className + "\n";
+                className + "\t" +
+                requestName + "\n";
     }
 }

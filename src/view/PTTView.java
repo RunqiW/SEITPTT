@@ -2,7 +2,7 @@ package view;
 
 import model.PTTModel;
 import model.identities.Teacher;
-import model.identities.User;
+
 
 public class PTTView {
 
@@ -71,9 +71,14 @@ public class PTTView {
     public void classDirectorBoard(){
         System.out.println("Please enter the number of your choice");
         System.out.println( " 1.check requests.\n" +
-                            " 2.create new class.\n" +
-                            " 3.add request.\n" +
-                            " 4.log out.");
+                            " 2.check classes.\n" +
+                            " 3.create new class.\n" +
+                            " 4.add request.\n" +
+                            " 5.log out.");
+    }
+
+    public void showClasses(){
+        System.out.print(model.getClasses());
     }
 
     public void addClass(int i){
@@ -106,7 +111,7 @@ public class PTTView {
                             " 2.log out");
     }
 
-    public void showTeacherstatus(Teacher t){
+    public void showTeacherStatus(Teacher t){
         System.out.println(t);
     }
 
@@ -115,31 +120,15 @@ public class PTTView {
     }
 
     public void enterInt(){
-        System.out.println("Please enter the number of your choice, end with enter");
+        System.out.println("Please enter the number of your choice, end with enter.");
     }
 
-    public void findUser(int i){
-        if(i == 0){
-            System.out.println("Please enter a username.");
-        }else if(i == 1){
-            System.out.println("Please enter user's password.");
-        }else if(i == 2){
-            System.out.println("Done.");
-        }else{
-            System.err.println("Error.");
-        }
+    public void selectTeacher(){
+        System.out.println("Please enter the number of teacher in the teacher list.");
     }
 
-    public void findRequest(int i){
-        if(i == 0){
-            System.out.println("Please enter a classID, which the request belongs to");
-        }else if(i == 1){
-            System.out.println("Please enter the request title");
-        }else if(i == 2){
-            System.out.println("Done.");
-        }else{
-            System.err.println("Error.");
-        }
+    public void selectRequest(){
+        System.out.println("Please enter the number of request in the request list.");
     }
 
     public void successMessage(){

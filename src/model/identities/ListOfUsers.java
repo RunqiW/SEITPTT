@@ -1,12 +1,13 @@
 package model.identities;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ListOfUsers {
-    private ArrayList<User> users;
+    private LinkedList<User> users;
 
     public ListOfUsers() {
-        users = new ArrayList<User>();
+        users = new LinkedList<>();
     }
 
     public boolean add(User user) {
@@ -31,12 +32,12 @@ public class ListOfUsers {
         return teachers;
     }
 
-    public User getUser(int index){
-        return users.get(index);
-    }
-
     public int indexOf(User u){
         return users.indexOf(u);
+    }
+
+    public User getUser(int index){
+        return users.get(index);
     }
 
     public User getUser(String userName, String password){

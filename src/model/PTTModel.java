@@ -42,18 +42,20 @@ public class PTTModel {
     }
 
     public boolean addClass(Class c){
-        if (classes.getClass(c.getClassID()) == null){
+        if (!classes.contains(c)){
             classes.add(c);
             return true;
-        }else {
-            return false;
         }
+        return false;
     }
 
     public boolean addRequest(String requestTitle, String requestContent, String classID){
         Class c = classes.getClass(classID);
-        Request req = new Request(requestTitle, requestContent, c);
-        return requests.add(req);
+        if(c != null) {
+            Request req = new Request(requestTitle, requestContent, c);
+            return requests.add(req);
+        }
+        return false;
     }
 
     public boolean addRequest(Request req){
@@ -61,18 +63,18 @@ public class PTTModel {
     }
 
 
-    public boolean approveRequest(String classID, String reqTitle){
-        Request req = requests.getPendingRequests().getRequest(classID,reqTitle);
-        if(req != null){
+    public boolean approveRequest(int index){
+        Request req = requests.getRequest(index);
+        if(req != null && requests.getPendingRequests().contains(req)){
             req.approve();
             return true;
         }
         return false;
     }
 
-    public boolean declineRequest(String classID, String reqTitle){
-        Request req = requests.getPendingRequests().getRequest(classID,reqTitle);
-        if(req != null){
+    public boolean declineRequest(int index){
+        Request req = requests.getRequest(index);
+        if(req != null && requests.getPendingRequests().contains(req)){
             req.decline();
             return true;
         }
@@ -88,20 +90,18 @@ public class PTTModel {
         return users.add(t);
     }
 
-    public boolean removeTeacher(String username, String password){
-        if(users.getUser(username,password) == null){
-            return false;
-        }
-        if(users.getUser(username,password) instanceof Teacher) {
-            users.remove(users.getUser(username, password));
+    public boolean removeTeacher(int index){
+        User u = users.getTeachers().getUser(index);
+        if (u != null){
+            users.remove(u);
             return true;
         }
         return false;
     }
 
 
-    public boolean trainTeacher(String username, String password){
-        Teacher teacher = (Teacher) users.getTeachers().getUser(username, password);
+    public boolean trainTeacher(int index){
+        Teacher teacher = (Teacher) users.getTeachers().getUser(index);
         if(teacher != null) {
             teacher.train();
             return true;
@@ -109,13 +109,12 @@ public class PTTModel {
         return false;
     }
 
-    public boolean allocateTeacher(String username, String password, String classID, String requestTitle){
-        Teacher t =(Teacher) users.getTeachers().getUser(username, password);
-        Request req = requests.getUnallocatedRequests().getRequest(classID,requestTitle);
-        Class cl = classes.getClass(classID);
+    public boolean allocateTeacher(int teacherIndex, int requestIndex){
+        Teacher t =(Teacher) users.getTeachers().getUser(teacherIndex);
+        Request req = requests.getUnallocatedRequests().getRequest(requestIndex);
         if (t != null && req != null) {
             req.allocate();
-            t.setClassName(cl.getClassName());
+            t.setClassName(req.getaClass().getClassName());
             t.setRequestName(req.getRequestTitle());
             return true;
         }

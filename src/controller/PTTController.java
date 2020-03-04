@@ -83,25 +83,29 @@ public class PTTController {
             }
             this.adminBoard();
         }else if (choice ==4){
-            String[] user = this.findUser();
-            if(model.removeTeacher(user[0], user[1])){
+            int index = this.enterInt();
+            if(model.removeTeacher(index)){
                 view.successMessage();
             }else{
                 view.errorMessage();
             }
             this.adminBoard();
-        }else if (choice ==5){
-            String[] user = this.findUser();
-            String[] req = this.findRequest();
-            if(model.allocateTeacher(user[0],user[1],req[0],req[1])){
+        }else if (choice == 5){
+            view.selectTeacher();
+            int indexTeacher = scanner.nextInt();
+            scanner.nextLine();
+            view.selectRequest();
+            int indexRequest = scanner.nextInt();
+            scanner.nextLine();
+            if(model.allocateTeacher(indexTeacher, indexRequest)){
                 view.successMessage();
             }else {
                 view.errorMessage();
             }
             this.adminBoard();
         }else if (choice ==6){
-            String[] user = this.findUser();
-            if(model.trainTeacher(user[0],user[1])){
+            int index = this.enterInt();
+            if(model.trainTeacher(index)){
                 view.successMessage();
             }else{
                 view.errorMessage();
@@ -127,16 +131,16 @@ public class PTTController {
             view.showTeachers();
             this.pTTDirectorBoard();
         }else if (choice ==3){
-            String[] req = this.findRequest();
-            if(model.approveRequest(req[0],req[1])){
+            int index = this.enterInt();
+            if(model.approveRequest(index)){
                 view.successMessage();
             }else{
                 view.errorMessage();
             }
             this.pTTDirectorBoard();
         }else if (choice ==4){
-            String[] req = this.findRequest();
-            if(model.declineRequest(req[0],req[1])){
+            int index = this.enterInt();
+            if(model.declineRequest(index)){
                 view.successMessage();
             }else{
                 view.errorMessage();
@@ -156,10 +160,13 @@ public class PTTController {
         scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
         scanner.nextLine();
-        if(choice == 1){
+        if(choice == 1) {
             view.showRequest();
             this.classDirectorBoard();
         }else if(choice == 2){
+            view.showClasses();
+            this.classDirectorBoard();
+        }else if(choice == 3){
             String[] cl = new String[3];
             for(int i = 0; i < 3; i++){
                 view.addClass(i);
@@ -171,7 +178,7 @@ public class PTTController {
                 view.errorMessage();
             }
             this.classDirectorBoard();
-        }else if (choice ==3){
+        }else if (choice ==4){
             String[] req = new String[3];
             for(int i = 0; i<3; i++){
                 view.addRequest(i);
@@ -183,7 +190,7 @@ public class PTTController {
                 view.errorMessage();
             }
             this.classDirectorBoard();
-        }else if (choice ==4){
+        }else if (choice ==5){
             this.restartPTT();
         }else{
             view.enterInt();
@@ -198,7 +205,7 @@ public class PTTController {
         int choice = scanner.nextInt();
         scanner.nextLine();
         if(choice == 1){
-            view.showTeacherstatus((Teacher)model.getCurrentUser());
+            view.showTeacherStatus((Teacher)model.getCurrentUser());
             this.teacherBoard();
         }else if(choice == 2){
             this.restartPTT();
@@ -215,21 +222,10 @@ public class PTTController {
         this.startPTT();
     }
 
-    public String[] findUser(){
-        String[] user = new String[2];
-        for(int i = 0; i < 2; i++){
-            view.findUser(i);
-            user[i] = scanner.nextLine();
-        }
-        return user;
-    }
-
-    public String[] findRequest(){
-        String[] req = new String[2];
-        for(int i=0; i < 2; i++){
-            view.findRequest(i);
-            req[i] = scanner.nextLine();
-        }
-        return req;
+    public int enterInt(){
+        view.enterInt();
+        int index = scanner.nextInt();
+        scanner.nextLine();
+        return index;
     }
 }
