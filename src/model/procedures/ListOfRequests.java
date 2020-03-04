@@ -1,6 +1,5 @@
 package model.procedures;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ListOfRequests {
@@ -34,7 +33,7 @@ public class ListOfRequests {
 
     public Request getRequest(String classID, String requestTitle){
         for (Request req: requests) {
-            if(req.getaClass().getClassID() == classID && req.getRequestTitle().contentEquals(requestTitle)){
+            if(req.getaClass().getClassID().contentEquals(classID) && req.getRequestTitle().contentEquals(requestTitle)){
                 return req;
             }
         }

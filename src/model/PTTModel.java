@@ -6,8 +6,6 @@ import model.procedures.ListOfClasses;
 import model.procedures.ListOfRequests;
 import model.procedures.Request;
 
-import java.util.SplittableRandom;
-
 public class PTTModel {
 
     private ListOfUsers users;
