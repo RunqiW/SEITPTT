@@ -2,6 +2,11 @@ package model.procedures;
 
 import java.util.LinkedList;
 
+/**
+ *  list of class
+ *  @author RunQi Wang 2471061
+ */
+
 public class ListOfClasses {
 
     private LinkedList<Class> classes;

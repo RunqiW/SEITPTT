@@ -2,6 +2,11 @@ package model.procedures;
 
 import java.util.LinkedList;
 
+/**
+ *  list of requests
+ *  @author RunQi Wang 2471061
+ */
+
 public class ListOfRequests {
 
     private LinkedList<Request> requests;

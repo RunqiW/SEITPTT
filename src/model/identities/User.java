@@ -1,5 +1,12 @@
 package model.identities;
 
+
+/**
+ *  abstract class to represent all kind of users.
+ *  (username+password) unique
+ *  @author RunQi Wang 2471061
+ */
+
 public abstract class User{
 
     private String firstName;

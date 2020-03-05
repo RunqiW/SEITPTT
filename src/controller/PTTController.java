@@ -9,6 +9,12 @@ import view.PTTView;
 
 import java.util.Scanner;
 
+/**
+ *  Controller for the PTT app.
+ *  @author RunQi Wang 2471061
+ */
+
+
 public class PTTController {
     private PTTView view;
     private PTTModel model;
@@ -22,7 +28,7 @@ public class PTTController {
     }
 
     public void initData(){
-/*
+/*      test data
         Class c1 = new Class("Math","Math109-19201","19-20-1");
         Class c2 = new Class("Math","Math109-19202","19-20-2");
         Class c = new Class("Physics","PHS322-19201","19-20-1");
@@ -45,12 +51,15 @@ public class PTTController {
     }
 
     public void startPTT(){
+        // to log in
         scanner = new Scanner(System.in);
         view.enterUsername();
         String username = scanner.nextLine();
         view.enterPassword();
         String password = scanner.nextLine();
         User u = model.logIn(username,password);
+
+        //go to different dashboards
         if(u instanceof Administrator){
             this.adminBoard();
         }else if(u instanceof PTTDirector){
@@ -65,18 +74,22 @@ public class PTTController {
         }
     }
 
-    public void adminBoard(){
+    public void adminBoard(){ //DashBoard for admin
         view.adminBoard();
         scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
         scanner.nextLine();
+
         if(choice == 1){
+            // show approved request list
             view.showApprovedRequest();
             this.adminBoard();
         }else if(choice == 2){
+            // show teacher list
             view.showTeachers();
             this.adminBoard();
         }else if (choice ==3){
+            // add teacher into the list
             String[] teacher = new String[3];
             for(int i = 0; i < 3; i++){
                 view.addTeacher(i);
@@ -90,6 +103,7 @@ public class PTTController {
             dao.writeUsers(model.getUsers());
             this.adminBoard();
         }else if (choice ==4){
+            // remove teacher from the list
             int index = this.enterInt();
             if(model.removeTeacher(index)){
                 view.successMessage();
@@ -99,6 +113,7 @@ public class PTTController {
             dao.writeUsers(model.getUsers());
             this.adminBoard();
         }else if (choice == 5){
+            // to allocate a teacher to a aproved request
             view.selectTeacher();
             int indexTeacher = scanner.nextInt();
             scanner.nextLine();
@@ -114,6 +129,7 @@ public class PTTController {
             dao.writeRequests(model.getRequests());
             this.adminBoard();
         }else if (choice ==6){
+            // to set teacher as trained
             int index = this.enterInt();
             if(model.trainTeacher(index)){
                 view.successMessage();
@@ -123,25 +139,31 @@ public class PTTController {
             dao.writeUsers(model.getUsers());
             this.adminBoard();
         }else if (choice ==7){
+            // log out
             this.restartPTT();
         }else{
+            // helper message
             view.enterInt();
             this.adminBoard();
         }
     }
 
-    public void pTTDirectorBoard(){
+    public void pTTDirectorBoard(){// dashboard for PTT Director
         view.pTTDirectorBoard();
         scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
         scanner.nextLine();
+
         if(choice == 1){
+            // to show all request list
             view.showRequest();
             this.pTTDirectorBoard();
         }else if(choice == 2){
+            // to show teacher list
             view.showTeachers();
             this.pTTDirectorBoard();
         }else if (choice ==3){
+            //to approve a request
             int index = this.enterInt();
             if(model.approveRequest(index)){
                 view.successMessage();
@@ -151,6 +173,7 @@ public class PTTController {
             dao.writeRequests(model.getRequests());
             this.pTTDirectorBoard();
         }else if (choice ==4){
+            // to decline a request
             int index = this.enterInt();
             if(model.declineRequest(index)){
                 view.successMessage();
@@ -160,26 +183,32 @@ public class PTTController {
             dao.writeRequests(model.getRequests());
             this.pTTDirectorBoard();
         }else if (choice ==5){
+            // log out
             this.restartPTT();
         }else{
+            // helper message
             view.enterInt();
             this.pTTDirectorBoard();
         }
 
     }
 
-    public void classDirectorBoard(){
+    public void classDirectorBoard(){ // dashboard for class director
         view.classDirectorBoard();
         scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
         scanner.nextLine();
+
         if(choice == 1) {
+            //show all request list
             view.showRequest();
             this.classDirectorBoard();
         }else if(choice == 2){
+            //show class list
             view.showClasses();
             this.classDirectorBoard();
         }else if(choice == 3){
+            // add/create a new class
             String[] cl = new String[3];
             for(int i = 0; i < 3; i++){
                 view.addClass(i);
@@ -193,6 +222,7 @@ public class PTTController {
             dao.writeClasses(model.getClasses());
             this.classDirectorBoard();
         }else if (choice ==4){
+            // add/create a new request
             String[] req = new String[3];
             for(int i = 0; i<3; i++){
                 view.addRequest(i);
@@ -206,25 +236,31 @@ public class PTTController {
             dao.writeRequests(model.getRequests());
             this.classDirectorBoard();
         }else if (choice ==5){
+            // log out
             this.restartPTT();
         }else{
+            // helper message
             view.enterInt();
             this.classDirectorBoard();
         }
 
     }
 
-    public void teacherBoard(){
+    public void teacherBoard(){ // dashboard for teacher
         view.teacherBoard();
         scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
         scanner.nextLine();
+
         if(choice == 1){
+            // show self status
             view.showTeacherStatus((Teacher)model.getCurrentUser());
             this.teacherBoard();
         }else if(choice == 2){
+            // log out
             this.restartPTT();
         }else{
+            // helper message
             view.enterInt();
             this.teacherBoard();
         }
@@ -237,6 +273,7 @@ public class PTTController {
         this.startPTT();
     }
 
+    // helper method, let user to make selection
     public int enterInt(){
         view.enterInt();
         int index = scanner.nextInt();

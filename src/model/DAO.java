@@ -13,14 +13,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ *  Data access object for the PTT app.
+ *  read from txt files in "root/data/"
+ *  populate/write from model directly
+ *  @author RunQi Wang 2471061
+ */
+
+
 public class DAO {
 
     private final String fileDir = "data/";
     FileReader reader;
 
-    public DAO(){
-
-    }
+    public DAO(){ }
 
     public void readFile(PTTModel model){
         this.readUsers(model.getUsers());
@@ -35,9 +41,6 @@ public class DAO {
             e.printStackTrace();
         }
     }
-
-
-
 
     public ListOfUsers readUsers(ListOfUsers listOfUsers){
         String userFile = this.fileDir + "userfile.txt";

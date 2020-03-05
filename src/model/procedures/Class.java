@@ -1,5 +1,11 @@
 package model.procedures;
 
+/**
+ *  represent a class
+ *  stores name semester and  classID(unique).
+ *  @author RunQi Wang 2471061
+ */
+
 public class Class {
 
     private String className;

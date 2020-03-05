@@ -2,6 +2,12 @@ package model.identities;
 
 import java.util.LinkedList;
 
+/**
+ *  List of Users
+ *  have method to extract sublist from it, typically for teacher list
+ *  @author RunQi Wang 2471061
+ */
+
 public class ListOfUsers {
     private LinkedList<User> users;
 

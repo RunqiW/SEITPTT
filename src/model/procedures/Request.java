@@ -1,5 +1,11 @@
 package model.procedures;
 
+/**
+ *  represent a request.
+ *  stores a class, requestTitle, requestContent; (requestTitle+class)(unique)
+ *  @author RunQi Wang 2471061
+ */
+
 public class Request {
 
     private Class aClass;

@@ -1,6 +1,10 @@
 package model.identities;
 
-import model.procedures.Request;
+/**
+ *  special User
+ *  stores extra status for training and allocation
+ *  @author RunQi Wang 2471061
+ */
 
 public class Teacher extends User{
 

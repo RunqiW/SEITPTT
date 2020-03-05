@@ -3,6 +3,11 @@ package view;
 import model.PTTModel;
 import model.identities.Teacher;
 
+/**
+ *  Commandline View for the PTT app.
+ *  @author RunQi Wang 2471061
+ */
+
 
 public class PTTView {
 

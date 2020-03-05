@@ -6,6 +6,12 @@ import model.procedures.ListOfClasses;
 import model.procedures.ListOfRequests;
 import model.procedures.Request;
 
+/**
+ *  Model for the PTT app.
+ *  @author RunQi Wang 2471061
+ */
+
+
 public class PTTModel {
 
     private ListOfUsers users;
@@ -114,6 +120,7 @@ public class PTTModel {
         return false;
     }
 
+    // getters & setters
     public ListOfUsers getUsers() {
         return users;
     }
