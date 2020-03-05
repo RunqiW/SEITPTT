@@ -157,7 +157,7 @@ public class DAO {
             }else if(u instanceof ClassDirector){
                 type = "ClassDirector";
             }
-            str += type + " " + u.listString();
+            str += type + " " + u;
         }
         try {
             FileWriter fileWriter = new FileWriter(targetFile);

@@ -70,7 +70,7 @@ public class ListOfUsers {
     public String toString() {
         String str ="";
         for (User u:users) {
-          str += this.indexOf(u) + ". " + u;
+          str += this.indexOf(u) + ". " + u.listString();
         }
         return str;
     }
