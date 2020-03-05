@@ -22,7 +22,7 @@ public class PTTController {
     }
 
     public void initData(){
-        /*
+/*
         Class c1 = new Class("Math","Math109-19201","19-20-1");
         Class c2 = new Class("Math","Math109-19202","19-20-2");
         Class c = new Class("Physics","PHS322-19201","19-20-1");

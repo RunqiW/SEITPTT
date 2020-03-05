@@ -47,7 +47,8 @@ public class Teacher extends User{
         this.className = className;
     }
 
-    public String listString() {
+    @Override
+    public String toString() {
         return  this.getFirstName() + " " +
                 this.getLastName() + " " +
                 this.getUserName() + " " +
@@ -56,11 +57,11 @@ public class Teacher extends User{
                 requestName + "\n";
     }
 
-    @Override
-    public String toString() {
+    public String listString() {
         return  this.getFirstName() + " " +
                 this.getLastName() + " " +
                 this.getUserName() + " " +
+                this.getPassword() + " " +
                 trained + " " +
                 className + " " +
                 requestName + "\n";

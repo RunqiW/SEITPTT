@@ -1,0 +1,5 @@
+Administrator Runqi Wang wrq 123456
+PTTDirector Xubin Qiu qxb 654321
+ClassDirector YU Wang YW 456789
+Teacher Weicheng Xu WCX 987654 trained null null
+Teacher bo hu bohu 321 untrained Chemistry SPY

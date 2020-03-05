@@ -37,7 +37,7 @@ public class ListOfClasses {
 
     public boolean contains(Class c){
         for (Class cl: classes) {
-            if(cl.getClassID().equals(c.getClassID())){
+            if(cl.getClassID().contentEquals(c.getClassID())){
                 return true;
             }
         }

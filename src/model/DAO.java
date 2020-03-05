@@ -61,11 +61,8 @@ public class DAO {
         if(type.contains("Teacher")){
             Teacher t= new Teacher(values[0],values[1],values[2],values[3]);
             if(s.hasNext()){
-                String b = s.next();
-                if(b.contentEquals("true")){
-                    t.setTrained(true);
-                }
-                t.setTrained(false);
+                Boolean b = s.nextBoolean();
+                t.setTrained(b);
             }
             if(s.hasNext()){
                 t.setClassName(s.next());
@@ -100,8 +97,10 @@ public class DAO {
     }
 
     public Class readClass(Scanner s){
-        String[] str = s.nextLine().split(" ");
-        Class cl = new Class(str[0], str[1], str[2]);
+        String className = s.next();
+        String classID = s.next();
+        String classSemester =s.next();
+        Class cl = new Class(className, classID, classSemester);
         if(s.hasNextLine()){
             s.nextLine();
         }
@@ -121,26 +120,19 @@ public class DAO {
     }
 
     public Request readRequest(Scanner s){
-        String[] str = s.nextLine().split(" ");
+        String[] str = new String[5];
+        for (int i=0 ;i<5;i++) {
+            str[i] = s.next();
+        }
         Class cl = new Class(str[2], str[3], str[4]);
         Request req = new Request(str[0], str[1], cl);
         if(s.hasNext()) {
-            String status = s.next();
-            if (status.contentEquals("2")) {
-                req.setStatus(2);
-            } else if (status.contentEquals("1")){
-                req.setStatus(1);
-            }else if (status.contentEquals("0")){
-                req.setStatus(0);
-            }
+            int status = s.nextInt();
+            req.setStatus(status);
         }
         if(s.hasNext()){
-            String al = s.next();
-            if(al.contentEquals("true")){
-                req.setAllocated(true);
-            }else {
-                req.setAllocated(false);
-            }
+            Boolean al = s.nextBoolean();
+            req.setAllocated(al);
         }
         if(s.hasNextLine()){
             s.nextLine();

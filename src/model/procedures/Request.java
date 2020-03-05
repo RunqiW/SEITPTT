@@ -70,6 +70,13 @@ public class Request {
     }
 
     public void setStatus(int status) {
+        if(status == 0){
+            statusMessage = "Approved";
+        }else if(status == 1){
+            statusMessage = "Declined";
+        }else if(status == 2){
+            statusMessage = "Pending";
+        }
         this.status = status;
     }
 

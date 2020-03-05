@@ -36,10 +36,12 @@ public class PTTView {
     }
 
     public void showApprovedRequest(){
+        System.out.println("No.  Title  Content  Class  ClassID  ClassSemester  ApproveStatus  AllocateStatus");
         System.out.print(model.getRequests().getApprovedRequests());
     }
 
     public void showTeachers(){
+        System.out.println("No. Firstname  Lastname  Username  TrainingStatus AllocateStatus");
         System.out.print(model.getUsers().getTeachers());
     }
 
@@ -65,6 +67,7 @@ public class PTTView {
     }
 
     public void showRequest(){
+        System.out.println("No.  Title  Content  Class  ClassID  ClassSemester  ApproveStatus  AllocateStatus");
         System.out.print(model.getRequests());
     }
 
@@ -78,6 +81,7 @@ public class PTTView {
     }
 
     public void showClasses(){
+        System.out.println("No.  ClassName  ClassID  ClassSemester");
         System.out.print(model.getClasses());
     }
 
