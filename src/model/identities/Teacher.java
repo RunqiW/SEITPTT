@@ -13,6 +13,15 @@ public class Teacher extends User{
         super(firstName, lastName, userName, password);
     }
 
+    public void setTrained(boolean t) {
+        isTrained = t;
+        if(t) {
+            this.trained = "trained.";
+        }else {
+            this.trained = "untrained";
+        }
+    }
+
     public boolean isTrained() {
         return isTrained;
     }
@@ -38,13 +47,22 @@ public class Teacher extends User{
         this.className = className;
     }
 
+    public String listString() {
+        return  this.getFirstName() + " " +
+                this.getLastName() + " " +
+                this.getUserName() + " " +
+                this.isTrained + " " +
+                className + " " +
+                requestName + "\n";
+    }
+
     @Override
     public String toString() {
-        return  this.getFirstName() + "\t" +
-                this.getLastName() + "\t" +
-                this.getUserName() + "\t" +
-                trained + "\t" +
-                className + "\t" +
+        return  this.getFirstName() + " " +
+                this.getLastName() + " " +
+                this.getUserName() + " " +
+                trained + " " +
+                className + " " +
                 requestName + "\n";
     }
 }

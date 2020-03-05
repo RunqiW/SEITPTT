@@ -24,6 +24,7 @@ public class Request {
         allowcateMessage = "unallocated";
     }
 
+
     public Class getaClass() {
         return aClass;
     }
@@ -68,6 +69,14 @@ public class Request {
         return status;
     }
 
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public void setAllocated(boolean allocated) {
+        this.allocated = allocated;
+    }
+
     public void allocate(){
         allocated = true;
         allowcateMessage = "allocated";
@@ -79,10 +88,22 @@ public class Request {
 
     @Override
     public String toString() {
-        return  requestTitle + "\t" +
-                requestContent + "\t" +
-                statusMessage + "\t" +
-                allowcateMessage + "\t" +
-                aClass;
+        return  requestTitle + " " +
+                requestContent + " " +
+                this.getaClass().getClassName() + " " +
+                this.getaClass().getClassID() + " " +
+                this.getaClass().getSemester() + " " +
+                status + " " +
+                allocated + "\n";
+    }
+
+    public String listString(){
+        return  requestTitle + " " +
+                requestContent + " " +
+                this.getaClass().getClassName() + " " +
+                this.getaClass().getClassID() + " " +
+                this.getaClass().getSemester() + " " +
+                statusMessage + " " +
+                allowcateMessage + "\n";
     }
 }

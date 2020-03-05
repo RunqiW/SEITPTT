@@ -50,9 +50,16 @@ public abstract class User{
 
     @Override
     public String toString() {
-        return  firstName + "\t" +
-                lastName + "\t" +
-                userName + "\t" +
+        return  firstName + " " +
+                lastName + " " +
+                userName + " " +
+                password + "\n";
+    }
+
+    public String listString() {
+        return  firstName + " " +
+                lastName + " " +
+                userName + " " +
                 password + "\n";
     }
 }

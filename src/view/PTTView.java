@@ -85,9 +85,9 @@ public class PTTView {
         if(i == 0){
             System.out.println("Please enter class name.");
         }else if (i == 1){
-            System.out.println("Please enter class semester.");
+            System.out.println("Please enter class ID");
         }else if(i == 2){
-            System.out.println("Please enter class ID.");
+            System.out.println("Please enter class semester.");
         }else{
             System.err.println("Error. wrong input int");
         }

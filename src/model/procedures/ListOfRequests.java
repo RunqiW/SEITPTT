@@ -90,11 +90,15 @@ public class ListOfRequests {
         return pendingRequests;
     }
 
+    public LinkedList<Request> getRequests() {
+        return requests;
+    }
+
     @Override
     public String toString() {
         String str = "";
         for (Request req:requests) {
-            str += this.indexOf(req) + ". " + req;
+            str += this.indexOf(req) + ". " + req.listString();
         }
         return str;
     }

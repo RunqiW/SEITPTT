@@ -39,8 +39,8 @@ public class Class {
 
     @Override
     public String toString() {
-        return  className + "\t" +
-                classID + "\t" +
+        return  className + " " +
+                classID + " " +
                 semester + "\n";
     }
 }

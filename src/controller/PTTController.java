@@ -1,9 +1,10 @@
 package controller;
 
-import model.PTTModel;
+
+import model.*;
 import model.identities.*;
+import model.procedures.*;
 import model.procedures.Class;
-import model.procedures.Request;
 import view.PTTView;
 
 import java.util.Scanner;
@@ -12,13 +13,16 @@ public class PTTController {
     private PTTView view;
     private PTTModel model;
     private Scanner scanner;
+    private DAO dao;
 
     public PTTController(){
         this.model = new PTTModel();
         this.view = new PTTView(model);
+        dao = new DAO();
     }
 
     public void initData(){
+        /*
         Class c1 = new Class("Math","Math109-19201","19-20-1");
         Class c2 = new Class("Math","Math109-19202","19-20-2");
         Class c = new Class("Physics","PHS322-19201","19-20-1");
@@ -36,6 +40,8 @@ public class PTTController {
         model.addClass(c1);
         model.addClass(c2);
         model.addRequest(r);
+*/
+        dao.readFile(model);
     }
 
     public void startPTT(){
@@ -81,6 +87,7 @@ public class PTTController {
             }else {
                 view.errorMessage();
             }
+            dao.writeUsers(model.getUsers());
             this.adminBoard();
         }else if (choice ==4){
             int index = this.enterInt();
@@ -89,6 +96,7 @@ public class PTTController {
             }else{
                 view.errorMessage();
             }
+            dao.writeUsers(model.getUsers());
             this.adminBoard();
         }else if (choice == 5){
             view.selectTeacher();
@@ -102,6 +110,8 @@ public class PTTController {
             }else {
                 view.errorMessage();
             }
+            dao.writeUsers(model.getUsers());
+            dao.writeRequests(model.getRequests());
             this.adminBoard();
         }else if (choice ==6){
             int index = this.enterInt();
@@ -110,6 +120,7 @@ public class PTTController {
             }else{
                 view.errorMessage();
             }
+            dao.writeUsers(model.getUsers());
             this.adminBoard();
         }else if (choice ==7){
             this.restartPTT();
@@ -137,6 +148,7 @@ public class PTTController {
             }else{
                 view.errorMessage();
             }
+            dao.writeRequests(model.getRequests());
             this.pTTDirectorBoard();
         }else if (choice ==4){
             int index = this.enterInt();
@@ -145,6 +157,7 @@ public class PTTController {
             }else{
                 view.errorMessage();
             }
+            dao.writeRequests(model.getRequests());
             this.pTTDirectorBoard();
         }else if (choice ==5){
             this.restartPTT();
@@ -177,6 +190,7 @@ public class PTTController {
             }else {
                 view.errorMessage();
             }
+            dao.writeClasses(model.getClasses());
             this.classDirectorBoard();
         }else if (choice ==4){
             String[] req = new String[3];
@@ -189,6 +203,7 @@ public class PTTController {
             }else{
                 view.errorMessage();
             }
+            dao.writeRequests(model.getRequests());
             this.classDirectorBoard();
         }else if (choice ==5){
             this.restartPTT();

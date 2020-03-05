@@ -31,12 +31,11 @@ public class PTTModel {
 
     public boolean addClass(String className, String semester, String id){
         Class c = new Class(className, semester, id);
-        if (classes.getClass(id) == null){
+        if (classes.getClass(id) == null) {
             classes.add(c);
             return true;
-        }else {
-            return false;
         }
+        return false;
     }
 
     public boolean addClass(Class c){

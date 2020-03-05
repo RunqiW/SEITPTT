@@ -56,6 +56,10 @@ public class ListOfUsers {
         return false;
     }
 
+    public LinkedList<User> getUsers() {
+        return users;
+    }
+
     @Override
     public String toString() {
         String str ="";

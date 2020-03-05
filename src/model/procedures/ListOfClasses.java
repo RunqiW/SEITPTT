@@ -44,6 +44,9 @@ public class ListOfClasses {
         return false;
     }
 
+    public LinkedList<Class> getClasses() {
+        return classes;
+    }
 
     @Override
     public String toString() {
